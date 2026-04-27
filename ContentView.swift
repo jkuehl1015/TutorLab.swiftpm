@@ -7,6 +7,8 @@ struct ContentView: View {
                 Text("Welcome To TutorLab")
                     .font(.largeTitle)
                     .fontWeight(.black)
+                NavigationLink("Student Sign-In") { StudentSignInView()
+                }
             }
         }
     }
