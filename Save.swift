@@ -7,15 +7,17 @@
 import SwiftUI
 
 class Save {
-    var studentID: String
+    var studentID: Int? = nil
     var studentName: String
     var studentTeacher: String
     var studentSubject: String
+    var studentBlock: Int? = nil
     
     init() {
-        self.studentID = ""
+        self.studentID = nil
         self.studentName = ""
         self.studentTeacher = ""
         self.studentSubject = ""
+        self.studentBlock = nil
     }
 }
