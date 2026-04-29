@@ -8,7 +8,7 @@ struct ContentView: View {
                 Text("Welcome To TutorLab")
                     .font(.largeTitle)
                     .fontWeight(.black)
-                NavigationLink("Student Sign-In") { StudentSignInView(stuInfo: $stuInfo)
+                NavigationLink("Student Sign-Up") { StudentSignInView(stuInfo: $stuInfo)
                 }
                 .frame(width: 175, height: 50, alignment: .center)
                 .foregroundStyle(.white)
