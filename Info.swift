@@ -6,7 +6,7 @@
 //
 import SwiftUI
 
-class Save {
+class Student {
     var studentID: Int? = nil
     var studentName: String
     var studentTeacher: String
