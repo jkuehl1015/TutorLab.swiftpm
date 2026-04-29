@@ -7,7 +7,9 @@
 import SwiftUI
 
 struct StudentSignInView: View {
+    @Binding var stuInfo: Save
     var body: some View {
-        TextField ("Email", text: .constant(""))
+        Text("Student Sign In")
+        TextField("Student ID", text: $stuInfo.studentID)
     }
 }
