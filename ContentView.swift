@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Binding var stuInfo: Save
+    @Binding var stuInfo: Student
     var body: some View {
         NavigationStack {
             VStack {

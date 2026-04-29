@@ -7,12 +7,15 @@
 import SwiftUI
 
 struct StudentSignInView: View {
-    @Binding var stuInfo: Save
+    @Binding var stuInfo: Student
     var body: some View {
         Text("Student Sign In")
+            .font(.system(size: 40))
+            .fontWeight(.bold)
         TextField("Student ID", value: $stuInfo.studentID, format: .number)
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .padding()
+            .keyboardType(.numberPad)
         TextField("Student Name", text: $stuInfo.studentName)
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .padding()
@@ -25,5 +28,6 @@ struct StudentSignInView: View {
         TextField("Student Block", value: $stuInfo.studentBlock, format: .number)
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .padding()
+            .keyboardType(.numberPad)
     }
 }

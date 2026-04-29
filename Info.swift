@@ -21,3 +21,24 @@ class Student {
         self.studentBlock = nil
     }
 }
+
+class Teacher {
+    var refferedStudent: String
+    var refferedStudentSubject: String
+    var refferedStudentBlock: Int? = nil
+    var refferedStudentID: Int? = nil
+    var refferelTeacher: String
+    
+    init() {
+        self.refferedStudent = ""
+        self.refferedStudentSubject = ""
+        self.refferedStudentBlock = nil
+        self.refferedStudentID = nil
+        self.refferelTeacher = ""
+    }
+    
+    
+    
+    
+    
+}
