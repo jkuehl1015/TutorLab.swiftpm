@@ -10,10 +10,12 @@ class Save {
     var studentID: String
     var studentName: String
     var studentTeacher: String
+    var studentSubject: String
     
     init() {
         self.studentID = ""
         self.studentName = ""
         self.studentTeacher = ""
+        self.studentSubject = ""
     }
 }

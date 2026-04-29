@@ -11,5 +11,13 @@ struct StudentSignInView: View {
     var body: some View {
         Text("Student Sign In")
         TextField("Student ID", text: $stuInfo.studentID)
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+            .padding()
+        TextField("Student Name", text: $stuInfo.studentName)
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+            .padding()
+        TextField("Student Subject", text: $stuInfo.studentSubject)
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+            .padding()
     }
 }
