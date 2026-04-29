@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     @Binding var stuInfo: Student
+    @Binding var teacherInfo: Teacher
     var body: some View {
         NavigationStack {
             VStack {
@@ -15,7 +16,7 @@ struct ContentView: View {
                 .background(.black)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .padding()
-                NavigationLink("Teacher Sign-In") { TeacherSignInView()
+                NavigationLink("Teacher Sign-In") { TeacherSignInView(teacherInfo: $teacherInfo)
                 }
                 .frame(width: 175, height: 50, alignment: .center)
                 .foregroundStyle(.white)

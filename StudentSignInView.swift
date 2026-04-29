@@ -22,7 +22,7 @@ struct StudentSignInView: View {
         TextField("Student Subject", text: $stuInfo.studentSubject)
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .padding()
-        TextField("Student Teacher", text: $stuInfo.studentTeacher)
+        TextField("Student's Teacher", text: $stuInfo.studentTeacher)
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .padding()
         TextField("Student Block", value: $stuInfo.studentBlock, format: .number)
