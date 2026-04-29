@@ -8,6 +8,6 @@ import SwiftUI
 
 struct StudentSignInView: View {
     var body: some View {
-        Text("Student Sign In")
+        TextField ("Email", text: .constant(""))
     }
 }
