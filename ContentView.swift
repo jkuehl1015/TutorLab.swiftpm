@@ -10,6 +10,7 @@ struct ContentView: View {
                 NavigationLink("Student Sign-In") { StudentSignInView()
                 }
                 NavigationLink("Teacher Sign-In") { TeacherSignInView()
+
                 }
             }
         }
