@@ -11,7 +11,7 @@ struct TeacherSignInView: View {
     @State private var showingAlert = false
     var body: some View {
         VStack {
-            Text("Teacher Refferal")
+            Text("Teacher Referral")
                 .font(.system(size: 40))
                 .fontWeight(.bold)
             TextField("Student's ID", value: $teacherInfo.refferedStudentID, format: .number)
@@ -35,7 +35,7 @@ struct TeacherSignInView: View {
             Button("Refer") {
                 showingAlert = true
             }
-            .alert("Succecssfully Refered", isPresented: $showingAlert) {
+            .alert("Succecssfully Referred", isPresented: $showingAlert) {
                 Button("OK", role: .cancel) { }
             }
         }
