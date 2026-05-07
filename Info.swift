@@ -37,7 +37,15 @@ class Teacher {
         self.refferelTeacher = ""
     }
     
-    
+    class Tutor {
+        var tutorName: String
+        var tutorBlock: Int? = nil
+        
+        init() {
+            self.tutorName = ""
+            self.tutorBlock = nil
+        }
+    }
     
     
     

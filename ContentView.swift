@@ -3,6 +3,7 @@ import SwiftUI
 struct ContentView: View {
     @Binding var stuInfo: Student
     @Binding var teacherInfo: Teacher
+    @Binding var tutorInfo: Tutor
     var body: some View {
         NavigationStack {
             VStack {
