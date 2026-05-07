@@ -10,34 +10,35 @@ struct StudentSignInView: View {
     @Binding var stuInfo: Student
     @State private var showingAlert = false
     var body: some View {
-        Text("Student Sign In")
-            .font(.system(size: 40))
-            .fontWeight(.bold)
-        TextField("Student ID", value: $stuInfo.studentID, format: .number)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-            .padding()
-            .keyboardType(.numberPad)
-        TextField("Student Name", text: $stuInfo.studentName)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-            .padding()
-        TextField("Student Subject", text: $stuInfo.studentSubject)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-            .padding()
-        TextField("Student's Teacher", text: $stuInfo.studentTeacher)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-            .padding()
-        TextField("Student Block", value: $stuInfo.studentBlock, format: .number)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-            .padding()
-            .keyboardType(.numberPad)
-        
-        Button("Sign-Up") {
-            showingAlert = true
+        VStack {
+            Text("Student Sign-In")
+                .font(.system(size: 40))
+                .fontWeight(.bold)
+            TextField("Student ID", value: $stuInfo.studentID, format: .number)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+                .keyboardType(.numberPad)
+            TextField("Student Name", text: $stuInfo.studentName)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+            TextField("Student Subject", text: $stuInfo.studentSubject)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+            TextField("Student's Teacher", text: $stuInfo.studentTeacher)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+            TextField("Student Block", value: $stuInfo.studentBlock, format: .number)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+                .keyboardType(.numberPad)
+            
+            Button("Sign-Up") {
+                showingAlert = true
+            }
+            .alert("Succecssfully Signed-Up", isPresented: $showingAlert) {
+                Button("OK", role: .cancel) { }
+            }
         }
-        .alert("Succecssfully Signed-Up", isPresented: $showingAlert) {
-            Button("OK", role: .cancel) { }
-        }
-        
         
     }
 }

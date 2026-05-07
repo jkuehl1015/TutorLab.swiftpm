@@ -7,7 +7,16 @@
 import SwiftUI
 
 struct TutorSignInView: View {
+    @Binding var tutorInfo: Tutor
+    
     var body: some View {
-        Text("Tutor Sign In View")
+        VStack {
+            Text("Tutor Sign-In")
+                .font(.system(size: 40))
+                .fontWeight(.bold)
+        }
+        
+        
+        
     }
 }
