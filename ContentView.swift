@@ -26,7 +26,8 @@ struct ContentView: View {
                 .background(.black)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
               
-                NavigationLink("Tutor Sign-In") { TutorSignInView()
+                NavigationLink("Tutor Sign-In") { 
+                    TutorSignInView(tutorInfo: $tutorInfo)
                 }
                 .frame(width: 154, height: 50, alignment: .center)
                 .foregroundStyle(.white)
