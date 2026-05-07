@@ -8,6 +8,7 @@ import SwiftUI
 
 struct TeacherSignInView: View {
     @Binding var teacherInfo: Teacher
+    @State private var showingAlert = false
     var body: some View {
         Text("Teacher Sign In")
             .font(.system(size: 40))
@@ -29,5 +30,13 @@ struct TeacherSignInView: View {
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .padding()
             .keyboardType(.numberPad)
+        
+        Button("Refer") {
+            showingAlert = true
+        }
+        .alert("Succecssfully Refered", isPresented: $showingAlert) {
+            Button("OK", role: .cancel) { }
+        }
+        
     }
 }
