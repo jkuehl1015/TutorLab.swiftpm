@@ -8,6 +8,7 @@ import SwiftUI
 
 struct StudentSignInView: View {
     @Binding var stuInfo: Student
+    @State private var showingAlert = false
     var body: some View {
         Text("Student Sign In")
             .font(.system(size: 40))
@@ -29,5 +30,14 @@ struct StudentSignInView: View {
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .padding()
             .keyboardType(.numberPad)
+        
+        Button("Sign-Up") {
+            showingAlert = true
+        }
+        .alert("Succecssfully Signed-Up", isPresented: $showingAlert) {
+            Button("OK", role: .cancel) { }
+        }
+        
+        
     }
 }
