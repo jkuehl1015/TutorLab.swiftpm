@@ -9,6 +9,7 @@ struct ContentView: View {
                 Text("Welcome To TutorLab")
                     .font(.largeTitle)
                     .fontWeight(.black)
+               
                 NavigationLink("Student Sign-Up") { StudentSignInView(stuInfo: $stuInfo)
                 }
                 .frame(width: 175, height: 50, alignment: .center)
@@ -16,12 +17,14 @@ struct ContentView: View {
                 .background(.black)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .padding()
-                NavigationLink("Teacher Sign-In") { TeacherSignInView(teacherInfo: $teacherInfo)
+               
+                NavigationLink("Teacher Referral") { TeacherSignInView(teacherInfo: $teacherInfo)
                 }
                 .frame(width: 175, height: 50, alignment: .center)
                 .foregroundStyle(.white)
                 .background(.black)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
+              
                 NavigationLink("Tutor Sign-In") { TutorSignInView()
                 }
                 .frame(width: 154, height: 50, alignment: .center)

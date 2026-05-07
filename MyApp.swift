@@ -7,7 +7,7 @@ struct MyApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView(stuInfo: $stuInfo, teacherInfo: $teacherInfo)
-            TeacherSignInView(teacherInfo: $teacherInfo)
+            
             
         }
     }
