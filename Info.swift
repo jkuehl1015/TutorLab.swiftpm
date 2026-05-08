@@ -13,6 +13,17 @@ class Student: Identifiable {
     var studentSubject: String
     var studentBlock: Int? = nil
     
+    var generatedEmail: String {
+        let firstInitial = studentName.prefix(1).lowercased()
+        let lastName = studentName.components(separatedBy: " ").last?.lowercased() ?? ""
+        let idString = String(studentID ?? 0)
+        let lastFour = String(idString.suffix(4))
+        
+        return "\(firstInitial)\(lastName)\(lastFour)@stu.d214.org"
+    }
+    
+    
+    
     init(id: Int? = nil, name: String = "", teacher: String = "", subject: String = "", block: Int? = nil) {
         self.studentID = id
         self.studentName = name

@@ -17,8 +17,8 @@ struct StudentRowView: View {
             Divider()
             
             Group{
-                InfoRow(label: "Block", value: "\(String(describing: student.studentBlock))")
-                InfoRow(label: "ID", value: "\(String(describing: student.studentID))")
+                InfoRow(label: "Block", value: "\(student.studentBlock ?? 0)")
+                InfoRow(label: "ID", value: "\(student.studentID ?? 0)")
                 InfoRow(label: "Teacher", value: student.studentTeacher)
                 InfoRow(label: "Subject", value: student.studentSubject)
             }

@@ -39,7 +39,7 @@ struct TutorSignInView: View {
             }
             .padding()
             
-            NavigationLink(destination: TuteeListView(), isActive: $shouldGoToList) {
+            NavigationLink(destination: TuteeListView(tutorBlock: tutorBlockInput ?? 0), isActive: $shouldGoToList) {
                 EmptyView()
             }
         }
