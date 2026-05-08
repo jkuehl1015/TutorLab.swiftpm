@@ -6,19 +6,20 @@
 //
 import SwiftUI
 
-class Student {
+class Student: Identifiable {
     var studentID: Int? = nil
     var studentName: String
     var studentTeacher: String
     var studentSubject: String
     var studentBlock: Int? = nil
     
-    init() {
-        self.studentID = nil
-        self.studentName = ""
-        self.studentTeacher = ""
-        self.studentSubject = ""
-        self.studentBlock = nil
+    init(id: Int? = nil, name: String = "", teacher: String = "", subject: String = "", block: Int? = nil) {
+        self.studentID = id
+        self.studentName = name
+        self.studentTeacher = teacher
+        self.studentSubject = subject
+        self.studentBlock = block
+    
     }
 }
 
@@ -29,12 +30,12 @@ class Teacher {
     var refferedStudentID: Int? = nil
     var refferelTeacher: String
     
-    init() {
-        self.refferedStudent = ""
-        self.refferedStudentSubject = ""
-        self.refferedStudentBlock = nil
-        self.refferedStudentID = nil
-        self.refferelTeacher = ""
+    init(student: String = "", subject: String = "", block: Int? = nil, id: Int? = nil, teacher: String = "") {
+        self.refferedStudent = student
+        self.refferedStudentSubject = subject
+        self.refferedStudentBlock = block
+        self.refferedStudentID = id
+        self.refferelTeacher = teacher
     }
     
 }
@@ -42,9 +43,9 @@ class Teacher {
         var tutorName: String
         var tutorBlock: Int? = nil
         
-        init() {
-            self.tutorName = ""
-            self.tutorBlock = nil
+        init(name: String = "", block: Int? = nil) {
+            self.tutorName = name
+            self.tutorBlock = block
         }
     }
     
