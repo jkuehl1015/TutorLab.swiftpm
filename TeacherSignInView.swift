@@ -26,7 +26,7 @@ struct TeacherSignInView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                     .keyboardType(.numberPad)
-                TextField("Student's Name", text: $studentName)
+                TextField("Student's Full Name", text: $studentName)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                 TextField("Student's Subject", text: $subject)
