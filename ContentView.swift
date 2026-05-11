@@ -8,7 +8,7 @@ struct ContentView: View {
                 Text("Welcome To TutorLab")
                     .font(.largeTitle)
                     .fontWeight(.black)
-               
+                
                 NavigationLink(destination: StudentSignInView()) {
                     Text("Student Sign-In")
                         .frame(width: 175, height: 50, alignment: .center)
@@ -19,7 +19,7 @@ struct ContentView: View {
                         .scaleEffect(isPressed ? 0.94 : 1)
                         .animation(.spring(response: 0.3, dampingFraction: 0.6), value: isPressed)
                 }
- 
+                
                 NavigationLink(destination: TeacherSignInView()) {
                     Text("Teacher Referral")
                         .frame(width: 175, height: 50, alignment: .center)
@@ -30,7 +30,7 @@ struct ContentView: View {
                         .scaleEffect(isPressed ? 0.94 : 1)
                         .animation(.spring(response: 0.3, dampingFraction: 0.6), value: isPressed)
                 }
-              
+                
                 NavigationLink(destination: TutorSignInView()) {
                     Text("Tutor Sign-In")
                         .frame(width: 175, height: 50, alignment: .center)
@@ -41,6 +41,12 @@ struct ContentView: View {
                         .scaleEffect(isPressed ? 0.94 : 1)
                         .animation(.spring(response: 0.3, dampingFraction: 0.6), value: isPressed)
                 }
+                
+                Button("Hi") {
+                    return print("Hello")
+                }
+                .buttonStyle(ButtonEffect())
+                
             }
         }
     }
