@@ -9,7 +9,6 @@ import SwiftUI
 
 @available(iOS 17.0, *)
 struct TuteeListView: View {
-    
     @Environment(AppData.self) private var dataManager
     let tutorBlock: Int
     @State private var showingAlert = false
@@ -80,6 +79,7 @@ struct TuteeListView: View {
         let email = student.generatedEmail
         let subject = "TutorLab: You have a tutor".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         let body = "Hi \(student.studentName), your request for \(student.studentSubject) was accepted. See you in the Library during block \(tutorBlock)!".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        let encodedBody = body.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         
         if let url = URL(string: "mailto:\(email)?subject=\(subject)&body=\(body)") {
             UIApplication.shared.open(url)
