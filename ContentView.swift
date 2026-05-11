@@ -1,9 +1,7 @@
 import SwiftUI
-
+@available(iOS 17.0, *)
 struct ContentView: View {
-    @Binding var stuInfo: Student
-    @Binding var teacherInfo: Teacher
-    @Binding var tutorInfo: Tutor
+   
     var body: some View {
         NavigationStack {
             VStack {
@@ -11,7 +9,7 @@ struct ContentView: View {
                     .font(.largeTitle)
                     .fontWeight(.black)
                
-                NavigationLink("Student Sign-Up") { StudentSignInView(stuInfo: $stuInfo)
+                NavigationLink("Student Sign-Up") { StudentSignInView()
                 }
                 .frame(width: 175, height: 50, alignment: .center)
                 .foregroundStyle(.white)
@@ -19,7 +17,7 @@ struct ContentView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .padding()
                
-                NavigationLink("Teacher Referral") { TeacherSignInView(teacherInfo: $teacherInfo)
+                NavigationLink("Teacher Referral") { TeacherSignInView()
                 }
                 .frame(width: 175, height: 50, alignment: .center)
                 .foregroundStyle(.white)
@@ -27,7 +25,7 @@ struct ContentView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 12))
               
                 NavigationLink("Tutor Sign-In") { 
-                    TutorSignInView(tutorInfo: $tutorInfo)
+                    TutorSignInView()
                 }
                 .frame(width: 154, height: 50, alignment: .center)
                 .foregroundStyle(.white)

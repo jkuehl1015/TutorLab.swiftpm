@@ -6,38 +6,68 @@
 //
 import SwiftUI
 
+@available(iOS 17.0, *)
 struct TeacherSignInView: View {
-    @Binding var teacherInfo: Teacher
+    @Environment(AppData.self) private var dataManager
+    @State private var studentID: Int? = nil
+    @State private var studentName: String = ""
+    @State private var subject: String = ""
+    @State private var teacherName: String = ""
+    @State private var block: Int? = nil
+    
     @State private var showingAlert = false
     var body: some View {
-        VStack {
-            Text("Teacher Refferal")
-                .font(.system(size: 40))
-                .fontWeight(.bold)
-            TextField("Student's ID", value: $teacherInfo.refferedStudentID, format: .number)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-                .keyboardType(.numberPad)
-            TextField("Student's Name", text: $teacherInfo.refferedStudent)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-            TextField("Student's Subject", text: $teacherInfo.refferedStudentSubject)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-            TextField("Student's Teacher", text: $teacherInfo.refferelTeacher)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-            TextField("Student's Block", value: $teacherInfo.refferedStudentBlock, format: .number)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-                .keyboardType(.numberPad)
-            
-            Button("Refer") {
-                showingAlert = true
-            }
-            .alert("Succecssfully Refered", isPresented: $showingAlert) {
-                Button("OK", role: .cancel) { }
+        ScrollView{
+            VStack {
+                Text("Teacher Referral")
+                    .font(.system(size: 40))
+                    .fontWeight(.bold)
+                TextField("Student's ID", value: $studentID, format: .number)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                    .keyboardType(.numberPad)
+                TextField("Student's Name", text: $studentName)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                TextField("Student's Subject", text: $subject)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                TextField("Student's Teacher", text: $teacherName)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                TextField("Student's Block", value: $block, format: .number)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                    .keyboardType(.numberPad)
+                
+                Button("Refer") {
+                    
+                    let referredStudent = Student(
+                            id: studentID,
+                            name: studentName,
+                            teacher: teacherName,
+                            subject: subject,
+                            block: block
+                        )
+                    dataManager.addStudent(newStudent: referredStudent)
+                    
+                    
+                    showingAlert = true
+                    clearFields()
+                }
+                .buttonStyle(.borderedProminent)
+                .alert("Succecssfully Referred", isPresented: $showingAlert) {
+                    Button("OK", role: .cancel) { }
+                }
             }
         }
     }
+    func clearFields() {
+        studentID = nil
+        studentName = ""
+        subject = ""
+        teacherName = ""
+        block = nil
+    }
+    
 }

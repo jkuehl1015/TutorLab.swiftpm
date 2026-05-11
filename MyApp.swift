@@ -1,14 +1,14 @@
 import SwiftUI
 
+@available(iOS 17.0, *)
 @main
 struct MyApp: App {
-    @State var stuInfo = Student()
-    @State var teacherInfo = Teacher()
-    @State var tutorInfo = Tutor()
+   @State private var dataManager = AppData()
     
     var body: some Scene {
         WindowGroup {
-            ContentView(stuInfo: $stuInfo, teacherInfo: $teacherInfo, tutorInfo: $tutorInfo)
+            ContentView()
+                .environment(dataManager)
             
             
         }
