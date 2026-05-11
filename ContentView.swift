@@ -1,7 +1,7 @@
 import SwiftUI
 @available(iOS 17.0, *)
 struct ContentView: View {
-   
+   @State var isPressed = false
     var body: some View {
         NavigationStack {
             VStack {
@@ -9,29 +9,38 @@ struct ContentView: View {
                     .font(.largeTitle)
                     .fontWeight(.black)
                
-                NavigationLink("Student Sign-Up") { StudentSignInView()
+                NavigationLink(destination: StudentSignInView()) {
+                    Text("Student Sign-In")
+                        .frame(width: 175, height: 50, alignment: .center)
+                        .foregroundStyle(.white)
+                        .background(.black)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .padding()
+                        .scaleEffect(isPressed ? 0.94 : 1)
+                        .animation(.spring(response: 0.3, dampingFraction: 0.6), value: isPressed)
                 }
-                .frame(width: 175, height: 50, alignment: .center)
-                .foregroundStyle(.white)
-                .background(.black)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-                .padding()
-               
-                NavigationLink("Teacher Referral") { TeacherSignInView()
+ 
+                NavigationLink(destination: TeacherSignInView()) {
+                    Text("Teacher Referral")
+                        .frame(width: 175, height: 50, alignment: .center)
+                        .foregroundStyle(.white)
+                        .background(.black)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .padding()
+                        .scaleEffect(isPressed ? 0.94 : 1)
+                        .animation(.spring(response: 0.3, dampingFraction: 0.6), value: isPressed)
                 }
-                .frame(width: 175, height: 50, alignment: .center)
-                .foregroundStyle(.white)
-                .background(.black)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
               
-                NavigationLink("Tutor Sign-In") { 
-                    TutorSignInView()
+                NavigationLink(destination: TutorSignInView()) {
+                    Text("Tutor Sign-In")
+                        .frame(width: 175, height: 50, alignment: .center)
+                        .foregroundStyle(.white)
+                        .background(.black)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .padding()
+                        .scaleEffect(isPressed ? 0.94 : 1)
+                        .animation(.spring(response: 0.3, dampingFraction: 0.6), value: isPressed)
                 }
-                .frame(width: 154, height: 50, alignment: .center)
-                .foregroundStyle(.white)
-                .background(.black)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-                .padding()
             }
         }
     }

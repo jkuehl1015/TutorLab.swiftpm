@@ -21,7 +21,7 @@ struct StudentSignInView: View {
             Text("Student Sign-In")
                 .font(.system(size: 40))
                 .fontWeight(.bold)
-            TextField("Student ID", value: $idInput, format: .number)
+            TextField("Student ID", value: $idInput, format: .number.grouping(.never))
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
                 .keyboardType(.numberPad)

@@ -22,7 +22,7 @@ struct TeacherSignInView: View {
                 Text("Teacher Referral")
                     .font(.system(size: 40))
                     .fontWeight(.bold)
-                TextField("Student's ID", value: $studentID, format: .number)
+                TextField("Student's ID", value: $studentID, format: .number.grouping(.never))
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                     .keyboardType(.numberPad)
