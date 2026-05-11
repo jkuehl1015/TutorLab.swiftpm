@@ -37,8 +37,7 @@ struct TuteeListView: View {
                                 .background(Color.green)
                                 .foregroundColor(.white)
                                 .cornerRadius(8)
-                        }
-                        .buttonStyle(ButtonEffect())
+                               }
                         
                     }
                     
@@ -62,16 +61,19 @@ struct TuteeListView: View {
     }
     
     func acceptTutee(_ student: Student) {
-        sendEmail(to: student)
         
-        withAnimation(.spring()) {
-            dataManager.availableStudents.removeAll(where: { $0.id == student.id })
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+            withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) {
+                dataManager.availableStudents.removeAll(where: { $0.id == student.id})
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                sendEmail(to: student)
+                showingAlert = true
+                
+            }
+       
         }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            showingAlert = true
-        }
-        }
+    }
         
     
     func sendEmail(to student: Student) {

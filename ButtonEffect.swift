@@ -13,6 +13,6 @@ struct ButtonEffect: ButtonStyle {
             .scaleEffect(configuration.isPressed ? 0.85 : 1.0)
             .brightness(configuration.isPressed ? -0.1 : 0)
             .shadow(radius: configuration.isPressed ? 0 : 5)
-            .animation(.spring(response: 0.2, dampingFraction: 0.5), value: configuration.isPressed)
+            .animation(.spring(response: 0.15, dampingFraction: 0.4), value: configuration.isPressed)
     }
 }
