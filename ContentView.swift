@@ -5,6 +5,10 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack {
+                Image(systemName: "graduationcap.circle")
+                    .resizable()
+                    .frame(width: 200, height: 200, alignment: .center)
+                    .padding()
                 Text("Welcome To TutorLab")
                     .font(.largeTitle)
                     .fontWeight(.black)
@@ -42,12 +46,9 @@ struct ContentView: View {
                         .animation(.spring(response: 0.3, dampingFraction: 0.6), value: isPressed)
                 }
                 
-                Button("Hi") {
-                    return print("Hello")
-                }
-                .buttonStyle(ButtonEffect())
                 
             }
+            Spacer()
         }
     }
 }
