@@ -61,30 +61,37 @@ struct TuteeListView: View {
     
     func acceptTutee(_ student: Student) {
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
-            withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) {
-                dataManager.availableStudents.removeAll(where: { $0.id == student.id})
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                sendEmail(to: student)
-                showingAlert = true
-                
-            }
-       
+        let match = AcceptedPairing(
+            studentName: "\(student.studentFirstName) \(student.studentLastName)",
+            tutorName: "Assigned Tutor",
+            subject: student.studentSubject,
+            date: Date()
+        )
+        
+        dataManager.acceptedPairings.insert(match, at: 0)
+        
+        withAnimation {
+            dataManager.availableStudents.removeAll(where: { $0.id == student.id})
         }
+        sendEmail(to: student)
+        showingAlert = true
     }
         
     
     func sendEmail(to student: Student) {
         let email = student.generatedEmail
-        let subject = "TutorLab: You have a tutor".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        let body = "Hi \(student.studentName), your request for \(student.studentSubject) was accepted. See you in the Library during block \(tutorBlock)!".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        let encodedBody = body.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        let fullName = "\(student.studentFirstName) \(student.studentLastName)"
+        let rawSubject = "TutorLab: You have a tutor"
+        let rawBody = "Hi \(fullName), your request for \(student.studentSubject) was accepted. See you in the Library during block \(tutorBlock)!"
+        let encodedSubject = rawSubject.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        let encodedBody = rawBody.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        let urlString = "mailto:\(email)?subject=\(encodedSubject)&body=\(encodedBody)"
         
-        if let url = URL(string: "mailto:\(email)?subject=\(subject)&body=\(body)") {
+        if let url = URL(string: urlString) {
             UIApplication.shared.open(url)
-            
         }
+        
+        
         
     }
     

@@ -46,8 +46,20 @@ struct ContentView: View {
                         .animation(.spring(response: 0.3, dampingFraction: 0.6), value: isPressed)
                 }
                 
+                Divider()
                 
-            }
+                NavigationLink(destination: AdminMainView()) {
+                    Label("Admin Portal", systemImage: "lock.shield.fill")
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.secondary.opacity(0.2))
+                        .cornerRadius(12)
+                    
+                }
+                .padding()
+                
+                
+                }
             Spacer()
         }
     }

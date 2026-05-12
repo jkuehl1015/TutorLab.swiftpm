@@ -10,7 +10,8 @@ import SwiftUI
 struct TeacherSignInView: View {
     @Environment(AppData.self) private var dataManager
     @State private var studentID: Int? = nil
-    @State private var studentName: String = ""
+    @State private var studentFirstName: String = ""
+    @State private var studentLastName: String = ""
     @State private var subject: String = ""
     @State private var teacherName: String = ""
     @State private var block: Int? = nil
@@ -26,9 +27,13 @@ struct TeacherSignInView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                     .keyboardType(.numberPad)
-                TextField("Student's Full Name", text: $studentName)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
+                HStack {
+                    TextField("Student's First Name", text: $studentFirstName)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    TextField("Student's Last Name", text: $studentLastName)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                }
+                .padding()
                 TextField("Student's Subject", text: $subject)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
@@ -44,7 +49,8 @@ struct TeacherSignInView: View {
                     
                     let referredStudent = Student(
                             id: studentID,
-                            name: studentName,
+                            firstName: studentFirstName,
+                            lastName: studentLastName,
                             teacher: teacherName,
                             subject: subject,
                             block: block
@@ -64,7 +70,8 @@ struct TeacherSignInView: View {
     }
     func clearFields() {
         studentID = nil
-        studentName = ""
+        studentFirstName = ""
+        studentLastName = ""
         subject = ""
         teacherName = ""
         block = nil
