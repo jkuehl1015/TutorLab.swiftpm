@@ -10,7 +10,7 @@ struct StudentRowView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(student.studentName)
+            Text(student.studentFirstName + student.studentLastName)
                 .font(.headline)
                 .foregroundStyle(.blue)
             

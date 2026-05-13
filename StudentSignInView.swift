@@ -10,7 +10,8 @@ import SwiftUI
 struct StudentSignInView: View {
     @Environment(AppData.self) private var dataManager
     @State private var idInput: Int? = nil
-    @State private var nameInput: String = ""
+    @State private var firstNameInput: String = ""
+    @State private var lastNameInput: String = ""
     @State private var subjectInput: String = ""
     @State private var teacherInput: String = ""
     @State private var blockInput: Int? = nil
@@ -25,9 +26,15 @@ struct StudentSignInView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
                 .keyboardType(.numberPad)
-            TextField("Student Name", text: $nameInput)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
+            HStack {
+                TextField("Student First Name", text: $firstNameInput)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    
+                TextField("Student Last Name", text: $lastNameInput)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    
+            }
+            .padding()
             TextField("Student Subject", text: $subjectInput)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
@@ -42,7 +49,8 @@ struct StudentSignInView: View {
             Button("Sign-Up") {
                 let newArrival = Student(
                     id: idInput,
-                    name: nameInput,
+                    firstName: firstNameInput,
+                    lastName: lastNameInput,
                     teacher: teacherInput,
                     subject: subjectInput,
                     block: blockInput
@@ -52,6 +60,7 @@ struct StudentSignInView: View {
                 
                 showingAlert = true
                 clearFields()
+            
             }
             .buttonStyle(.borderedProminent)
             .alert("Succecssfully Signed-Up", isPresented: $showingAlert) {
@@ -63,7 +72,8 @@ struct StudentSignInView: View {
     }
     func clearFields() {
         idInput = nil
-        nameInput = ""
+        firstNameInput = ""
+        lastNameInput = ""
         subjectInput = ""
         teacherInput = ""
         blockInput = nil

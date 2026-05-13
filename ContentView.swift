@@ -5,10 +5,14 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack {
+                Image(systemName: "graduationcap.circle")
+                    .resizable()
+                    .frame(width: 200, height: 200, alignment: .center)
+                    .padding()
                 Text("Welcome To TutorLab")
                     .font(.largeTitle)
                     .fontWeight(.black)
-               
+                
                 NavigationLink(destination: StudentSignInView()) {
                     Text("Student Sign-In")
                         .frame(width: 175, height: 50, alignment: .center)
@@ -19,7 +23,7 @@ struct ContentView: View {
                         .scaleEffect(isPressed ? 0.94 : 1)
                         .animation(.spring(response: 0.3, dampingFraction: 0.6), value: isPressed)
                 }
- 
+                
                 NavigationLink(destination: TeacherSignInView()) {
                     Text("Teacher Referral")
                         .frame(width: 175, height: 50, alignment: .center)
@@ -30,7 +34,7 @@ struct ContentView: View {
                         .scaleEffect(isPressed ? 0.94 : 1)
                         .animation(.spring(response: 0.3, dampingFraction: 0.6), value: isPressed)
                 }
-              
+                
                 NavigationLink(destination: TutorSignInView()) {
                     Text("Tutor Sign-In")
                         .frame(width: 175, height: 50, alignment: .center)
@@ -41,7 +45,22 @@ struct ContentView: View {
                         .scaleEffect(isPressed ? 0.94 : 1)
                         .animation(.spring(response: 0.3, dampingFraction: 0.6), value: isPressed)
                 }
-            }
+                
+                Divider()
+                
+                NavigationLink(destination: AdminMainView()) {
+                    Label("Admin Portal", systemImage: "lock.shield.fill")
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.secondary.opacity(0.2))
+                        .cornerRadius(12)
+                    
+                }
+                .padding()
+                
+                
+                }
+            Spacer()
         }
     }
 }

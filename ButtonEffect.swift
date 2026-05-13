@@ -10,8 +10,9 @@ import SwiftUI
 struct ButtonEffect: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .scaleEffect(configuration.isPressed ? 0.94 : 1.0)
-            .opacity(configuration.isPressed ? 0.9 : 1.0)
-            .animation(.spring(response: 0.3, dampingFraction: 0.6), value: configuration.isPressed)
+            .scaleEffect(configuration.isPressed ? 0.85 : 1.0)
+            .brightness(configuration.isPressed ? -0.1 : 0)
+            .shadow(radius: configuration.isPressed ? 0 : 5)
+            .animation(.spring(response: 0.15, dampingFraction: 0.4), value: configuration.isPressed)
     }
 }

@@ -8,14 +8,15 @@ import SwiftUI
 
 class Student: Identifiable {
     var studentID: Int? = nil
-    var studentName: String
+    var studentFirstName: String
+    var studentLastName: String
     var studentTeacher: String
     var studentSubject: String
     var studentBlock: Int? = nil
     
     var generatedEmail: String {
-        let firstInitial = studentName.prefix(1).lowercased()
-        let lastName = studentName.components(separatedBy: " ").last?.lowercased() ?? ""
+        let firstInitial = studentFirstName.prefix(1).lowercased()
+        let lastName = studentLastName.lowercased()
         let idString = String(studentID ?? 0)
         let lastFour = String(idString.suffix(4))
         
@@ -24,9 +25,10 @@ class Student: Identifiable {
     
     
     
-    init(id: Int? = nil, name: String = "", teacher: String = "", subject: String = "", block: Int? = nil) {
+    init(id: Int? = nil, firstName: String = "", lastName: String = "", teacher: String = "", subject: String = "", block: Int? = nil) {
         self.studentID = id
-        self.studentName = name
+        self.studentFirstName = firstName
+        self.studentLastName = lastName
         self.studentTeacher = teacher
         self.studentSubject = subject
         self.studentBlock = block
