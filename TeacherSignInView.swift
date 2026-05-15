@@ -45,26 +45,36 @@ struct TeacherSignInView: View {
                     .padding()
                     .keyboardType(.numberPad)
                 
-                Button("Refer") {
-                    
+
+                Button(action: {
                     let referredStudent = Student(
-                            id: studentID,
-                            firstName: studentFirstName,
-                            lastName: studentLastName,
-                            teacher: teacherName,
-                            subject: subject,
-                            block: block
-                        )
-                    dataManager.addStudent(newStudent: referredStudent)
+                        id: studentID,
+                        firstName: studentFirstName,
+                        lastName: studentLastName,
+                        teacher: teacherName,
+                        subject: subject,
+                        block: block ?? 1
+                    )
                     
+                    dataManager.addStudent(newStudent: referredStudent)
                     
                     showingAlert = true
                     clearFields()
+                }) {
+                    Text("Refer")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
                 }
-                .buttonStyle(.borderedProminent)
-                .alert("Succecssfully Referred", isPresented: $showingAlert) {
+                .padding(.horizontal)
+                .alert("Successfully Referred Student", isPresented: $showingAlert) {
                     Button("OK", role: .cancel) { }
                 }
+                
+                
             }
         }
     }

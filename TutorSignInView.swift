@@ -31,7 +31,7 @@
                 .padding()
                 
                 NavigationLink {
-                    TuteeListView(tutorBlock: tutorBlockInput ?? 1)
+                    TuteeListView(tutorBlock: tutorBlockInput ?? 1, tuturName: tutorNameInput)
                 } label: {
                     Text("Sign In")
                         .frame(maxWidth: .infinity)

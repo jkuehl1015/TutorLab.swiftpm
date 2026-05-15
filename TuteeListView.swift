@@ -11,6 +11,7 @@ import SwiftUI
 struct TuteeListView: View {
     @Environment(AppData.self) private var dataManager
     let tutorBlock: Int
+    let tuturName: String
     @State private var showingAlert = false
     var filteredStudents: [Student] {
         dataManager.availableStudents.filter{ $0.studentBlock == tutorBlock
@@ -29,6 +30,8 @@ struct TuteeListView: View {
                         
                         Button(action: {
                             acceptTutee(student)
+                            
+                         
                         }) {
                             Label("Accept Student", systemImage: "checkmark.circle.fill")
                                 .frame(maxWidth: .infinity)
@@ -63,7 +66,7 @@ struct TuteeListView: View {
         
         let match = AcceptedPairing(
             studentName: "\(student.studentFirstName) \(student.studentLastName)",
-            tutorName: "Assigned Tutor",
+            tutorName: "Tutor: \(tuturName)",
             subject: student.studentSubject,
             date: Date()
         )

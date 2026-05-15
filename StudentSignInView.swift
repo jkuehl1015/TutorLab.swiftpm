@@ -29,10 +29,10 @@ struct StudentSignInView: View {
             HStack {
                 TextField("Student First Name", text: $firstNameInput)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    
+                
                 TextField("Student Last Name", text: $lastNameInput)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    
+                
             }
             .padding()
             TextField("Student Subject", text: $subjectInput)
@@ -46,28 +46,36 @@ struct StudentSignInView: View {
                 .padding()
                 .keyboardType(.numberPad)
             
-            Button("Sign-Up") {
+            Button(action: {
                 let newArrival = Student(
                     id: idInput,
                     firstName: firstNameInput,
                     lastName: lastNameInput,
                     teacher: teacherInput,
                     subject: subjectInput,
-                    block: blockInput
+                    block: blockInput ?? 1
                 )
                 
                 dataManager.addStudent(newStudent: newArrival)
                 
                 showingAlert = true
                 clearFields()
-            
+            }) {
+                Text("Sign-Up")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(12)
             }
-            .buttonStyle(.borderedProminent)
-            .alert("Succecssfully Signed-Up", isPresented: $showingAlert) {
+            .padding(.horizontal) 
+            .alert("Successfully Signed-Up", isPresented: $showingAlert) {
                 Button("OK", role: .cancel) { }
             }
+            
         }
-        
+            
         
     }
     func clearFields() {
