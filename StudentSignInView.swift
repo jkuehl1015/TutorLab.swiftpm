@@ -47,33 +47,29 @@ struct StudentSignInView: View {
                 .keyboardType(.numberPad)
             
             Button(action: {
-                // 1. Create the object
                 let newArrival = Student(
                     id: idInput,
                     firstName: firstNameInput,
                     lastName: lastNameInput,
                     teacher: teacherInput,
                     subject: subjectInput,
-                    block: blockInput ?? 1 // Providing a default to avoid 'Optional' hazards
+                    block: blockInput ?? 1
                 )
                 
-                // 2. Add to your data
                 dataManager.addStudent(newStudent: newArrival)
                 
-                // 3. Trigger UI feedback
                 showingAlert = true
                 clearFields()
             }) {
-                // 4. This is the "Label" part that controls how it looks
                 Text("Sign-Up")
                     .font(.headline)
-                    .frame(maxWidth: .infinity) // Makes it stretch across the screen
+                    .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color.blue) // You can use .black or any school color
+                    .background(Color.blue)
                     .foregroundColor(.white)
                     .cornerRadius(12)
             }
-            .padding(.horizontal) // Adds a little breathing room on the sides
+            .padding(.horizontal) 
             .alert("Successfully Signed-Up", isPresented: $showingAlert) {
                 Button("OK", role: .cancel) { }
             }

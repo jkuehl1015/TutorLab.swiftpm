@@ -14,7 +14,7 @@ struct ContentView: View {
                     .fontWeight(.black)
                 
                 NavigationLink(destination: StudentSignInView()) {
-                    Text("Student Sign-In")
+                    Text("Student Sign-Up")
                         .frame(width: 175, height: 50, alignment: .center)
                         .foregroundStyle(.white)
                         .background(.black)
