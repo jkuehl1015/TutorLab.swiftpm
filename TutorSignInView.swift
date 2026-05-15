@@ -13,36 +13,44 @@
         @State private var tutorBlockInput: Int? = nil
         @State private var shouldGoToList = false
         var body: some View {
-            
-            VStack {
-                Text("Tutor Sign-In")
-                    .font(.system(size: 40))
-                    .fontWeight(.bold)
-                
-                TextField("Tutor's Name", text: $tutorNameInput)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
-                TextField("Tutor's Block", value: $tutorBlockInput, format: .number)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
-                    .keyboardType(.numberPad)
-                
-            
-                .padding()
-                
-                NavigationLink {
-                    TuteeListView(tutorBlock: tutorBlockInput ?? 1, tuturName: tutorNameInput)
-                } label: {
-                    Text("Sign In")
-                        .frame(maxWidth: .infinity)
+            ZStack{
+                Color.purple.ignoresSafeArea()
+                    .opacity(0.8)
+                VStack {
+                    Text("Tutor Sign-In")
+                        .font(.system(size: 40))
+                        .fontDesign(.serif)
+                        .foregroundColor(.yellow)
+                        .fontWeight(.bold)
+                    
+                    TextField("Tutor's Name", text: $tutorNameInput)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
+                    TextField("Tutor's Block", value: $tutorBlockInput, format: .number)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding()
+                        .keyboardType(.numberPad)
+                    
+                    
+                        .padding()
+                    
+                    NavigationLink {
+                        TuteeListView(tutorBlock: tutorBlockInput ?? 1, tuturName: tutorNameInput)
+                    } label: {
+                        Text("Sign In")
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.yellow)
+                            .opacity(0.8)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
+                    
                 }
+                .padding()
+             }
             }
-            .padding()
-        }
+        
         
         func signInTuor() {
             let newTutor = Tutor(

@@ -18,65 +18,70 @@ struct StudentSignInView: View {
     
     @State private var showingAlert = false
     var body: some View {
-        VStack {
-            Text("Student Sign-In")
-                .font(.system(size: 40))
-                .fontWeight(.bold)
-            TextField("Student ID", value: $idInput, format: .number.grouping(.never))
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-                .keyboardType(.numberPad)
-            HStack {
-                TextField("Student First Name", text: $firstNameInput)
+        ZStack{
+            Color.purple.ignoresSafeArea()
+                .opacity(0.8)
+            VStack {
+                Text("Student Sign-In")
+                    .font(.system(size: 40))
+                    .foregroundStyle(.yellow)
+                    .fontDesign(.serif)
+                    .fontWeight(.bold)
+                TextField("Student ID", value: $idInput, format: .number.grouping(.never))
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                
-                TextField("Student Last Name", text: $lastNameInput)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                
-            }
-            .padding()
-            TextField("Student Subject", text: $subjectInput)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-            TextField("Student's Teacher", text: $teacherInput)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-            TextField("Student Block", value: $blockInput, format: .number)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-                .keyboardType(.numberPad)
-            
-            Button(action: {
-                let newArrival = Student(
-                    id: idInput,
-                    firstName: firstNameInput,
-                    lastName: lastNameInput,
-                    teacher: teacherInput,
-                    subject: subjectInput,
-                    block: blockInput ?? 1
-                )
-                
-                dataManager.addStudent(newStudent: newArrival)
-                
-                showingAlert = true
-                clearFields()
-            }) {
-                Text("Sign-Up")
-                    .font(.headline)
-                    .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(12)
+                    .keyboardType(.numberPad)
+                HStack {
+                    TextField("Student First Name", text: $firstNameInput)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    
+                    TextField("Student Last Name", text: $lastNameInput)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    
+                }
+                .padding()
+                TextField("Student Subject", text: $subjectInput)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                TextField("Student's Teacher", text: $teacherInput)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                TextField("Student Block", value: $blockInput, format: .number)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                    .keyboardType(.numberPad)
+                
+                Button(action: {
+                    let newArrival = Student(
+                        id: idInput,
+                        firstName: firstNameInput,
+                        lastName: lastNameInput,
+                        teacher: teacherInput,
+                        subject: subjectInput,
+                        block: blockInput ?? 1
+                    )
+                    
+                    dataManager.addStudent(newStudent: newArrival)
+                    
+                    showingAlert = true
+                    clearFields()
+                }) {
+                    Text("Sign-Up")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.yellow)
+                        .opacity(0.8)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
+                }
+                .padding(.horizontal)
+                .alert("Successfully Signed-Up", isPresented: $showingAlert) {
+                    Button("OK", role: .cancel) { }
+                }
             }
-            .padding(.horizontal) 
-            .alert("Successfully Signed-Up", isPresented: $showingAlert) {
-                Button("OK", role: .cancel) { }
-            }
-            
-        }
-            
-        
+         }
     }
     func clearFields() {
         idInput = nil
