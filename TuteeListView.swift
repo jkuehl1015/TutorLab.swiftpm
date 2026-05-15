@@ -30,6 +30,8 @@ struct TuteeListView: View {
                         
                         Button(action: {
                             acceptTutee(student)
+                            
+                         
                         }) {
                             Label("Accept Student", systemImage: "checkmark.circle.fill")
                                 .frame(maxWidth: .infinity)
@@ -64,7 +66,7 @@ struct TuteeListView: View {
         
         let match = AcceptedPairing(
             studentName: "\(student.studentFirstName) \(student.studentLastName)",
-            tutorName: "Tutor = \(tuturName)",
+            tutorName: "Tutor: \(tuturName)",
             subject: student.studentSubject,
             date: Date()
         )
